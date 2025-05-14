@@ -21,30 +21,37 @@
     audio.appendChild(source);
     document.body.appendChild(audio);
 
-    // Criar botão para iniciar áudio
     const playBtn = document.createElement("button");
     playBtn.innerText = "🎵 Ativar Música";
-    playBtn.style.position = "fixed";
-    playBtn.style.bottom = "60px";
-    playBtn.style.right = "10px";
-    playBtn.style.zIndex = "1000";
+    Object.assign(playBtn.style, {
+        position: "fixed",
+        bottom: "60px",
+        right: "10px",
+        zIndex: "9999",
+        padding: "10px",
+        backgroundColor: "#111",
+        color: "#fff",
+        border: "1px solid #fff",
+        cursor: "pointer"
+    });
     playBtn.onclick = function () {
-        audio.play();
-        playBtn.remove(); // Esconde botão depois de clicar
+        audio.play().catch(e => console.warn("Erro ao tentar reproduzir música:", e));
+        playBtn.remove();
     };
     document.body.appendChild(playBtn);
 
-    // Controlador de volume
     const volControl = document.createElement("input");
     volControl.type = "range";
     volControl.min = "0";
     volControl.max = "1";
     volControl.step = "0.01";
     volControl.value = "0.5";
-    volControl.style.position = "fixed";
-    volControl.style.bottom = "10px";
-    volControl.style.right = "10px";
-    volControl.style.zIndex = "1000";
+    Object.assign(volControl.style, {
+        position: "fixed",
+        bottom: "10px",
+        right: "10px",
+        zIndex: "9999"
+    });
     volControl.oninput = function () {
         audio.volume = this.value;
     };
