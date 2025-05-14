@@ -12,17 +12,29 @@
 <tw-storydata name="Ashes of a New Beginning" startnode="1" creator="Twine" creator-version="2.10.0" format="Harlowe" format-version="3.3.9" ifid="a52e7b73-3d39-44aa-bda3-c52b3dbdfa0b" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">window.onload = function () {
     const audio = document.createElement("audio");
     audio.id = "bg-music";
-    audio.autoplay = true;
     audio.loop = true;
     audio.volume = 0.5;
 
     const source = document.createElement("source");
     source.src = "https://dl.dropboxusercontent.com/scl/fi/yv4yyi9cfflrnaoklelyj/Gladiator-_-Hans-Zimmer-_-The-Bands-of-HM-Royal-Marines.mp3?rlkey=sqzjoh1v4bwkb0bxopk3ube3p&st=pn2i58yj";
     source.type = "audio/mpeg";
-
     audio.appendChild(source);
     document.body.appendChild(audio);
 
+    // Criar botão para iniciar áudio
+    const playBtn = document.createElement("button");
+    playBtn.innerText = "🎵 Ativar Música";
+    playBtn.style.position = "fixed";
+    playBtn.style.bottom = "60px";
+    playBtn.style.right = "10px";
+    playBtn.style.zIndex = "1000";
+    playBtn.onclick = function () {
+        audio.play();
+        playBtn.remove(); // Esconde botão depois de clicar
+    };
+    document.body.appendChild(playBtn);
+
+    // Controlador de volume
     const volControl = document.createElement("input");
     volControl.type = "range";
     volControl.min = "0";
@@ -33,11 +45,9 @@
     volControl.style.bottom = "10px";
     volControl.style.right = "10px";
     volControl.style.zIndex = "1000";
-
     volControl.oninput = function () {
         audio.volume = this.value;
     };
-
     document.body.appendChild(volControl);
 };
 </script><tw-tag name="jogo" color="red"></tw-tag><tw-passagedata pid="1" name="Ashes of a New Beginning" tags="" position="100,0" size="100,100">(align:&quot;=&gt;&lt;=&quot;)+(box:&quot;X&quot;)[Ashes of a New Beginning]
@@ -367,7 +377,7 @@ The game ends with the player answering three reflective questions:
 &lt;img src=&quot;https://raw.githubusercontent.com/PLouzinho/imagens/refs/heads/main/Epilogo2.png&quot; alt=&quot;final image&quot; width=&quot;700&quot;&gt;
 
 [[📜 End of the Game]]  
-</tw-passagedata><tw-passagedata pid="33" name="📜 End of the Game" tags="" position="1700,800" size="100,100">(align:&quot;=&gt;&lt;=&quot;)+(box:&quot;=XXXXXXXX=&quot;)[=  
+</tw-passagedata><tw-passagedata pid="33" name="📜 End of the Game" tags="" position="1800,700" size="100,100">(align:&quot;=&gt;&lt;=&quot;)+(box:&quot;=XXXXXXXX=&quot;)[=  
 “Sometimes, it’s in the ashes that life plants something new.  
 The destination doesn’t matter.  
 What matters is who we are… while choosing.”  
